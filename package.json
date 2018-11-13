@@ -1,0 +1,35 @@
+{
+  "name": "react-shop-mini-project",
+  "version": "0.0.1",
+  "description": "React Mini Project Showcase.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel html/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caal-15/react-shop-mini-project.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Carlos González",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caal-15/react-shop-mini-project/issues"
+  },
+  "homepage": "https://github.com/caal-15/react-shop-mini-project#readme",
+  "dependencies": {
+    "eslint": "^5.9.0",
+    "parcel-bundler": "^1.10.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
