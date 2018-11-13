@@ -2,9 +2,17 @@ const fs = require('fs')
 const path = require('path')
 
 const colors = require('colors/safe')
+const corsMiddleware = require('restify-cors-middleware')
 const restify = require('restify')
 
 server = restify.createServer()
+
+cors = corsMiddleware({
+  origins: ['*'],
+})
+
+server.pre(cors.preflight)
+server.use(cors.actual)
 
 server.get('/products', (_, res) => {
   const filePath = 'data/products.json'
