@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "Dummy Server for Front End project.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/caal-15/react-shop-mini-project.git"
+  },
+  "keywords": [
+    "backend",
+    "server",
+    "restify"
+  ],
+  "author": "Carlos González",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caal-15/react-shop-mini-project/issues"
+  },
+  "homepage": "https://github.com/caal-15/react-shop-mini-project#readme",
+  "dependencies": {
+    "colors": "^1.3.2",
+    "eslint": "^5.9.0",
+    "restify": "^7.2.2"
+  }
+}
