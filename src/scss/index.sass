@@ -2,6 +2,9 @@
 
 @include react-md-everything
 
+*
+  box-sizing: border-box
+
 body
   margin: 0
 
@@ -24,6 +27,9 @@ body
 
 .main
   margin-top: $md-toolbar-height
+  display: flex
+  align-items: center
+  justify-content: center
 
 .menunav
   display: none
@@ -44,5 +50,35 @@ body
   align-items: center
   justify-content: center
 
-.product-list
+.products
   padding: 20px
+  width: 100%
+  max-width: 900px
+
+.products__list
+  padding: 0
+
+.products__list__card
+  padding: 10px
+  margin-bottom: 20px
+
+.products__list__card__info
+  display: flex
+  flex-flow: row wrap
+  width: 100%
+
+.products__list__card__img__wrapper
+  width: 25%
+  padding: 10px 25px
+
+.products__list__card__text__wrapper
+  width: 75%
+
+.products__list__card__img
+  width: 100%
+
+@media screen and (max-width: 720px)
+  .products__list__card__img__wrapper
+    width: 100%
+  .products__list__card__text__wrapper
+    width: 100%

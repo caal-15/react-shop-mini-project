@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { fetchProducts, dismissError } from '../actions/products'
-import ProductList from '../components/productList'
+import Products from '../components/products'
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: fetchProducts(dispatch),
@@ -17,4 +17,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ProductList)
+)(Products)
