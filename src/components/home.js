@@ -1,12 +1,11 @@
 import React from 'react'
-import Navbar from './navbar'
+import Header from './header'
 
 
 const Home = ({ location }) => {
-  console.log(location)
   return (
     <div>
-      <Navbar location={location} />
+      <Header location={location} />
       <main className='main'>
         <h1>Home</h1>
       </main>

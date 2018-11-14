@@ -1,12 +1,12 @@
 import React from 'react'
-import { Toolbar, Button } from 'react-md'
+import { Button } from 'react-md'
 import { Link } from 'react-router-dom'
-
 import navOptions from '../config/nav'
 
 const Navbar = ({ location }) => {
   const primaryPath = location.pathname.split('/')[1]
-  const children = (
+
+  return (
     <nav className='topnav'>
       {navOptions.map((option, idx) => {
         const btnPrimaryPath = option.to.split('/')[1]
@@ -23,15 +23,6 @@ const Navbar = ({ location }) => {
         )
       })}
     </nav>
-  )
-  return (
-    <header>
-      <Toolbar
-        themed
-        fixed
-        children={children}
-      />
-    </header>
   )
 }
 
