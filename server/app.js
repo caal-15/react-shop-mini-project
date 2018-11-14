@@ -16,14 +16,17 @@ server.use(cors.actual)
 
 server.get('/products', (_, res) => {
   const filePath = 'data/products.json'
-  fs.readFile(path.resolve(__dirname, filePath), 'utf8', (err, data) => {
-    if (err) {
-      console.log(err)
-      return res.send(500, new Error('File could not be Read'))
-    }
-    const parsed = JSON.parse(data)
-    res.json(parsed)
-  })
+  const readFile = () => {
+    fs.readFile(path.resolve(__dirname, filePath), 'utf8', (err, data) => {
+      if (err) {
+        console.log(err)
+        return res.send(500, new Error('File could not be Read'))
+      }
+      const parsed = JSON.parse(data)
+      res.json(parsed)
+    })
+  }
+  setTimeout(readFile, 1000)
 })
 
 const port = process.env.PORT || 8080
