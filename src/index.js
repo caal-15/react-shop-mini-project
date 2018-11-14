@@ -1,8 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import WebFontLoader from 'webfontloader'
 
 import App from './app'
+import reducer from './reducers'
+
+const store = createStore(reducer)
 
 WebFontLoader.load({
   google: {
@@ -11,6 +16,8 @@ WebFontLoader.load({
 })
 
 render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('react-app')
 )
