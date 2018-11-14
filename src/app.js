@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import './scss/index.sass'
 
@@ -11,7 +11,7 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/products' component={Home} />
         <Route exact path='/products/:filter' component={Home} />
-        <Route exact path='/products/clients' component={Home} />
+        <Route exact path='/clients' component={Home} />
         <Route exact path='/contact' component={Home} />
       </div>
     </BrowserRouter>
