@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import './scss/index.sass'
 
 import BasicLayout from './components/basicLayout'
+import FilteredProducts from './containers/filteredProducts'
 import Home from './components/home'
 
 const App = () => {
@@ -17,7 +18,13 @@ const App = () => {
         <Route
           exact
           path='/products'
-          render={(props) =>  <BasicLayout {...props} component={<Home />} />}
+          render={
+            (props) => {
+              return (
+                <BasicLayout {...props} component={<FilteredProducts />} />
+              )
+            }
+          }
         />
         <Route
           exact
