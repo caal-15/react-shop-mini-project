@@ -53,7 +53,7 @@ body
 .products
   padding: 20px
   width: 100%
-  max-width: 900px
+  max-width: 1200px
 
 .products__list
   padding: 0
@@ -62,10 +62,18 @@ body
   padding: 10px
   margin-bottom: 20px
 
-.products__list__card__info
+.products__grid__card
+  padding: 10px
+  height: 100%
+
+.products__list__card__info, .products__grid__card__info
   display: flex
   flex-flow: row wrap
   width: 100%
+
+.products__grid__card__img__wrapper
+  width: 40%
+  padding: 5px 5px 5px 20px
 
 .products__list__card__img__wrapper
   width: 25%
@@ -74,11 +82,21 @@ body
 .products__list__card__text__wrapper
   width: 75%
 
-.products__list__card__img
+.products__grid__card__text__wrapper
+  width: 60%
+
+.products__list__card__img, .products__grid__card__img
   width: 100%
 
+.products__list__card__text
+  padding-top: 0
+
 @media screen and (max-width: 720px)
-  .products__list__card__img__wrapper
+  .products__list__card__img__wrapper, .products__grid__card__img__wrapper
     width: 100%
-  .products__list__card__text__wrapper
+  .products__list__card__text__wrapper, .products__grid__card__text__wrapper
     width: 100%
+
+@media screen and (max-width: 840px)
+  .products__toolbar__mode
+    display: none
