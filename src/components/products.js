@@ -10,8 +10,10 @@ const propTypes = {
   products: PropTypes.arrayOf(productPropType),
   fetching: PropTypes.bool.isRequired,
   error: PropTypes.string,
+  filter: PropTypes.string,
   fetchProducts: PropTypes.func.isRequired,
-  dismissError: PropTypes.func.isRequired
+  dismissError: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired
 }
 
 class Products extends Component {
@@ -23,8 +25,22 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    const { fetchProducts } = this.props
+    const { fetchProducts, filter, setFilter, match } = this.props
     fetchProducts()
+    const newFilter = match ? match.params.filter : null
+    if (filter !== newFilter) {
+      setFilter(newFilter)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { match, setFilter } = this.props
+    const newFilter = match ? match.params.filter : null
+
+    const { filter } = prevProps
+    if (filter !== newFilter) {
+      setFilter(newFilter)
+    }
   }
 
   showList() {

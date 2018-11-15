@@ -28,3 +28,9 @@ export const dismissError = (dispatch) => {
     dispatch({ type: definitions.SET_ERROR, error: null })
   }
 }
+
+export const setFilter = (dispatch) => {
+  return (filter) => {
+    dispatch({ type: definitions.SET_FILTER, filter: filter })
+  }
+}
