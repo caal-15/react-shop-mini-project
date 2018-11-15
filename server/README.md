@@ -23,4 +23,4 @@ __NOTE:__ By default this server starts at [localhost:8080](http://localhost:808
 
 ## Additional Notes
 
-* This server has a __1 second__ delay per response, so that the Frontend can showcase it's behavior when content is being fetched.
+* This server has a __1 second__ delay per request, so that the Frontend can showcase it's behavior when content is being fetched.
