@@ -37,7 +37,7 @@ class Products extends Component {
 
     if (!lastSuccessfulFetch) {
       fetchProducts()
-    } else if ((now - lastSuccessfulFetch) / 1000 > 3000) {
+    } else if ((now - lastSuccessfulFetch) / 1000 > 300) {
       fetchProducts()
     }
 
