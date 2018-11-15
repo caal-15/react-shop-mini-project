@@ -12,6 +12,7 @@ export const createMessage = (dispatch) => {
       .end((err, res) => {
         dispatch({ type: definitions.SET_FECTHING, fetching: false })
         if (err) {
+          console.log(err)
           dispatch({
             type: definitions.SET_ERROR,
             error: 'There was an error creating your message'

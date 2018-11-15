@@ -6,6 +6,7 @@ import BasicLayout from './components/basicLayout'
 import ProductSection from './components/productSection'
 import ConnectedContactForm from './containers/connectedContactForm'
 import Home from './components/home'
+import Clients from './components/clients'
 
 const App = () => {
   return (
@@ -38,7 +39,7 @@ const App = () => {
         <Route
           exact
           path='/clients'
-          render={(props) =>  <BasicLayout {...props} component={Home} />}
+          render={(props) =>  <BasicLayout {...props} component={Clients} />}
         />
         <Route
           exact
