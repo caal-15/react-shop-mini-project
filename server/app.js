@@ -13,6 +13,7 @@ cors = corsMiddleware({
 
 server.pre(cors.preflight)
 server.use(cors.actual)
+server.use(restify.plugins.bodyParser())
 
 server.get('/products', (_, res) => {
   const filePath = 'data/products.json'
@@ -27,6 +28,14 @@ server.get('/products', (_, res) => {
     })
   }
   setTimeout(readFile, 1000)
+})
+
+server.post('/messages', (req, res) => {
+  const respond = () => {
+    console.log(req.body)
+    res.json(req.body)
+  }
+  setTimeout(respond, 1000)
 })
 
 const port = process.env.PORT || 8080

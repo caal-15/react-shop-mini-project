@@ -4,7 +4,7 @@ import './scss/index.sass'
 
 import BasicLayout from './components/basicLayout'
 import ProductSection from './components/productSection'
-import ContactForm from './components/contactForm'
+import ConnectedContactForm from './containers/connectedContactForm'
 import Home from './components/home'
 
 const App = () => {
@@ -46,7 +46,10 @@ const App = () => {
           render={
             (props) =>  {
               return (
-                <BasicLayout fullHeight {...props} component={ContactForm} />
+                <BasicLayout
+                  fullHeight {...props}
+                  component={ConnectedContactForm}
+                />
               )
             }
           }
