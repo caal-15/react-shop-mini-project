@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { CircularProgress, Snackbar, Button } from 'react-md'
+import PropTypes from 'prop-types'
 
 import ProductList from './productList'
 import ProductGrid from './productGrid'
+import productPropType from '../proptypes/product'
+
+const propTypes = {
+  products: PropTypes.arrayOf(productPropType),
+  fetching: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  fetchProducts: PropTypes.func.isRequired,
+  dismissError: PropTypes.func.isRequired
+}
 
 class Products extends Component {
   constructor(props) {
@@ -54,5 +64,7 @@ class Products extends Component {
     )
   }
 }
+
+Products.propTypes = propTypes
 
 export default Products

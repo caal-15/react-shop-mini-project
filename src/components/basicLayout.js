@@ -1,9 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import ReactRouterPropTypes from 'react-router-prop-types'
 
 import Header from './header'
 
-const BasicLayout = (props) => {
-  const { component, ...rest } =props
+const propTypes = {
+  component: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match,
+  route: ReactRouterPropTypes.route,
+}
+
+const BasicLayout = ({ component, ...rest }) => {
   const Component = component
   return (
     <div>
@@ -14,5 +23,7 @@ const BasicLayout = (props) => {
     </div>
   )
 }
+
+BasicLayout.propTypes = propTypes
 
 export default BasicLayout

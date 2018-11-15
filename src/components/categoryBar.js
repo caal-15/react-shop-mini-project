@@ -12,8 +12,13 @@ import {
   Button,
   Toolbar
 } from 'react-md'
+import { match as matchPropType } from 'react-router-prop-types'
 
 import categories from '../config/categories'
+
+const propTypes = {
+  match: matchPropType
+}
 
 class CategoryBar extends Component {
 
@@ -115,4 +120,7 @@ class CategoryBar extends Component {
     ])
   }
 }
+
+CategoryBar.propTypes = propTypes
+
 export default CategoryBar

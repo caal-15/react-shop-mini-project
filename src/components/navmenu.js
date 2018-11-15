@@ -1,8 +1,13 @@
 import React from 'react'
-import { MenuButton, ListItem, Button } from 'react-md'
+import { MenuButton, Button } from 'react-md'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import navOptions from '../config/nav'
+
+const propTypes = {
+  id: PropTypes.string.isRequired
+}
 
 const Navmenu = ({id}) => {
   const items = navOptions.map((option, idx) => {
@@ -23,5 +28,7 @@ const Navmenu = ({id}) => {
     </nav>
   )
 }
+
+Navmenu.propTypes = propTypes
 
 export default Navmenu

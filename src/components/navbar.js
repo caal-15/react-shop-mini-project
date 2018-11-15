@@ -2,6 +2,11 @@ import React from 'react'
 import { Button } from 'react-md'
 import { Link } from 'react-router-dom'
 import navOptions from '../config/nav'
+import { location as locationPropType } from 'react-router-prop-types'
+
+const propTypes = {
+  location: locationPropType.isRequired
+}
 
 const Navbar = ({ location }) => {
   const primaryPath = location.pathname.split('/')[1]
@@ -25,5 +30,7 @@ const Navbar = ({ location }) => {
     </nav>
   )
 }
+
+Navbar.propTypes = propTypes
 
 export default Navbar

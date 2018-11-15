@@ -1,5 +1,12 @@
 import React from 'react'
 import { Grid, Cell, Card, CardText, CardTitle } from 'react-md'
+import PropTypes from 'prop-types'
+
+import productPropType from '../proptypes/product'
+
+const propTypes = {
+  products: PropTypes.arrayOf(productPropType).isRequired
+}
 
 const ProductGrid = ({ products }) => {
   return (
@@ -33,5 +40,7 @@ const ProductGrid = ({ products }) => {
     </Grid>
   )
 }
+
+ProductGrid.propTypes = propTypes
 
 export default ProductGrid

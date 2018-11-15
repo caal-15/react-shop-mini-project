@@ -1,6 +1,14 @@
 import React from 'react'
 import { Card, CardTitle, CardText } from 'react-md'
 
+import PropTypes from 'prop-types'
+
+import productPropType from '../proptypes/product'
+
+const propTypes = {
+  products: PropTypes.arrayOf(productPropType).isRequired
+}
+
 const ProductList = ({ products }) => {
   return (
     <ul className='products__list'>
@@ -34,5 +42,7 @@ const ProductList = ({ products }) => {
     </ul>
   )
 }
+
+ProductList.propTypes = propTypes
 
 export default ProductList

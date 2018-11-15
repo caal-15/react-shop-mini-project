@@ -1,8 +1,6 @@
 import React from 'react'
-import Header from './header'
 
-
-const Home = ({ location }) => {
+const Home = () => {
   return (
     <h1>Home</h1>
   )
