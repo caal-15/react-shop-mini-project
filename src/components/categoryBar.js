@@ -38,12 +38,21 @@ class CategoryBar extends Component {
   }
 
   render() {
+    const { visible } = this.state
+    const { match } = this.props
+    const filter = match ? match.params.filter : null
+
     const closeBtn = <Button icon onClick={this.closeDrawer}>arrow_back</Button>
-    const subcats = categories.map(category => {
+    const subcats = categories.map((category, idx) => {
+      const secondaryRoute = category.to.split('/')[1]
+      const linkClassName = secondaryRoute === filter
+        ? 'category-bar__list__link category-bar__list__link--active'
+        : 'category-bar__list__link'
       return (
         <Link
+          key={idx}
           to={`/products${category.to}`}
-          className='category-bar__list__link'
+          className={linkClassName}
         >
           <ListItem
             primaryText={category.text}
@@ -54,19 +63,23 @@ class CategoryBar extends Component {
         </Link>
       )
     })
+
+    const linkClassName = filter
+      ? 'category-bar__list__link'
+      : 'category-bar__list__link category-bar__list__link--active'
     const items = [
-      <Link to='/products' className='category-bar__list__link'>
+      <Link key={'all'} to='/products' className={linkClassName}>
         <ListItem
           primaryText='All'
           leftAvatar={<Avatar icon={<FontIcon>view_list</FontIcon>}/>}
         />
       </Link>,
-      <Divider />,
+      <Divider key='divider' />,
       ...subcats
     ]
-    const { visible } = this.state
+
     return ([
-      <aside className='category-bar__wrapper'>
+      <aside key='desktop' className='category-bar__wrapper'>
         <Paper zDepth={1} className='category-bar'>
           <List className='category-bar__list'>
             <Subheader primaryText='Categories' />
@@ -74,7 +87,7 @@ class CategoryBar extends Component {
           </List>
         </Paper>
       </aside>,
-      <aside>
+      <aside key='mobile'>
         <Button
           primary
           id='category-drawer-button'

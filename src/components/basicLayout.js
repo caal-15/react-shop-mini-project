@@ -2,12 +2,14 @@ import React from 'react'
 
 import Header from './header'
 
-const BasicLayout = ({ component, location }) => {
+const BasicLayout = (props) => {
+  const { component, ...rest } =props
+  const Component = component
   return (
     <div>
-      <Header location={location} />
+      <Header {...rest} />
       <main className='main'>
-        {component}
+        <Component {...rest} />
       </main>
     </div>
   )

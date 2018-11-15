@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { fetchProducts, dismissError } from '../actions/products'
 import Products from '../components/products'
@@ -14,7 +15,9 @@ const mapStateToProps = state => ({
   error: state.products.error
 })
 
-export default connect(
+const ConnectedProducts = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Products)
+
+export default withRouter(ConnectedProducts)

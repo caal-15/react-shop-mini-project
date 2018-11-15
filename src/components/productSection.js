@@ -3,10 +3,10 @@ import React from 'react'
 import FilteredProducts from '../containers/filteredProducts'
 import CategoryBar from './categoryBar'
 
-const ProductSection = () => {
+const ProductSection = ({ match }) => {
   return(
     <div className='product-section'>
-      <CategoryBar />
+      <CategoryBar match={match} />
       <FilteredProducts />
     </div>
   )

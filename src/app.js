@@ -13,7 +13,7 @@ const App = () => {
         <Route
           exact
           path='/'
-          render={(props) =>  <BasicLayout {...props} component={<Home />} />}
+          render={(props) =>  <BasicLayout {...props} component={Home} />}
         />
         <Route
           path='/products/:filter'
@@ -23,7 +23,10 @@ const App = () => {
               const primaryRoute = location.pathname.split('/')[1]
               if (primaryRoute === 'products') {
                 return (
-                  <BasicLayout {...props} component={<ProductSection />} />
+                  <BasicLayout
+                    {...props}
+                    component={ProductSection}
+                  />
                 )
               } else {
                 return null
@@ -34,12 +37,12 @@ const App = () => {
         <Route
           exact
           path='/clients'
-          render={(props) =>  <BasicLayout {...props} component={<Home />} />}
+          render={(props) =>  <BasicLayout {...props} component={Home} />}
         />
         <Route
           exact
           path='/contact'
-          render={(props) =>  <BasicLayout {...props} component={<Home />} />}
+          render={(props) =>  <BasicLayout {...props} component={Home} />}
         />
       </div>
     </BrowserRouter>
