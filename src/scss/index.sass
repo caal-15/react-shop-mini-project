@@ -37,7 +37,7 @@ body
 .menunav__btn
   width: 100%
 
-@media screen and (max-width: 720px)
+@media screen and (max-width: 719px)
   .topnav
     display: none
   .menunav
@@ -52,7 +52,7 @@ body
 
 .products
   padding: 20px
-  width: 100%
+  width: 80%
   max-width: 1200px
 
 .products__list
@@ -91,12 +91,56 @@ body
 .products__list__card__text
   padding-top: 0
 
-@media screen and (max-width: 720px)
+@media screen and (max-width: 719px)
   .products__list__card__img__wrapper, .products__grid__card__img__wrapper
     width: 100%
   .products__list__card__text__wrapper, .products__grid__card__text__wrapper
     width: 100%
 
-@media screen and (max-width: 840px)
+@media screen and (max-width: 839px)
   .products__toolbar__mode
     display: none
+
+.product-section
+  width: 100%
+  display: flex
+  flex-flow: row wrap
+  align-items: flex-start
+  justify-content: flex-start
+
+.category-bar, .category-bar__wrapper
+  width: 19%
+  margin-right: 10px
+
+.category-bar
+  position: fixed
+  top: $md-toolbar-height
+  bottom: 0
+
+.category-bar__list
+  position: absolute
+  height: 100%
+  width: 100%
+
+.category-bar__list__link
+  text-decoration: none
+  font-weight: 700
+
+#category-drawer-button
+  display: none
+  position: fixed
+  bottom: 5px
+  left: 10px
+
+#category-drawer
+  display: none
+
+@media screen and (max-width: 1279px)
+  .products
+    width: 100%
+  .category-bar, .category-bar__wrapper
+    display: none
+  .product-section
+    justify-content: center
+  #category-drawer-button, #category-drawer
+    display: block

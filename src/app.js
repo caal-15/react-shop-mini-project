@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import './scss/index.sass'
 
 import BasicLayout from './components/basicLayout'
-import FilteredProducts from './containers/filteredProducts'
+import ProductSection from './components/productSection'
 import Home from './components/home'
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
           render={
             (props) => {
               return (
-                <BasicLayout {...props} component={<FilteredProducts />} />
+                <BasicLayout {...props} component={<ProductSection />} />
               )
             }
           }
@@ -29,7 +29,13 @@ const App = () => {
         <Route
           exact
           path='/products/:filter'
-          render={(props) =>  <BasicLayout {...props} component={<Home />} />}
+          render={
+            (props) => {
+              return (
+                <BasicLayout {...props} component={<ProductSection />} />
+              )
+            }
+          }
         />
         <Route
           exact
