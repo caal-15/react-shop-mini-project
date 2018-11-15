@@ -23,3 +23,4 @@ __NOTE:__ By default this server starts at [localhost:1234](http://localhost:123
 * The default endpoint for the backend server is [localhost:8080](http://localhost:8080), but this can be easily changed bis `src/config/server.js`
 * This project uses the [Parcel Bundler](https://parceljs.org/).
 * This project shows other images than the ones contained in the products (fetched from [Picsum](https://picsum.photos)) considering that during development of this project, [Lorem Pixel](http://lorempixel.com/) was down most of the time.
+* This project is responsive and works well on Mobile.
