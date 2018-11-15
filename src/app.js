@@ -4,12 +4,13 @@ import './scss/index.sass'
 
 import BasicLayout from './components/basicLayout'
 import ProductSection from './components/productSection'
+import ContactForm from './components/contactForm'
 import Home from './components/home'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className='full-height'>
         <Route
           exact
           path='/'
@@ -42,7 +43,13 @@ const App = () => {
         <Route
           exact
           path='/contact'
-          render={(props) =>  <BasicLayout {...props} component={Home} />}
+          render={
+            (props) =>  {
+              return (
+                <BasicLayout fullHeight {...props} component={ContactForm} />
+              )
+            }
+          }
         />
       </div>
     </BrowserRouter>

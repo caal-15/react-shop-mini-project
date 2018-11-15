@@ -5,8 +5,9 @@
 *
   box-sizing: border-box
 
-body
+html, body
   margin: 0
+  height: 100%
 
 .topnav
   width: 100%
@@ -26,10 +27,13 @@ body
   background-color: rgba($md-btn-light-theme-base-color, .40)
 
 .main
-  margin-top: $md-toolbar-height
   display: flex
   align-items: center
   justify-content: center
+  height: calc(100% - #{$md-toolbar-height})
+
+.topnav__wrapper
+  height: $md-toolbar-height
 
 .menunav
   display: none
@@ -144,3 +148,29 @@ body
     justify-content: center
   #category-drawer-button, #category-drawer
     display: block
+
+.contact-form__wrapper
+  width: 99%
+  height: 99%
+  max-width: 600px
+  padding: 20px
+  display: flex
+  flex-flow: column
+  align-items: center
+  justify-content: center
+
+.contact-form__paper
+  width: 100%
+  height: auto
+
+.contact-form__paper
+  padding: 40px
+
+.full-height
+  height: 100%
+  overflow: auto
+
+.contact-form__submit__wrapper
+  width: 100%
+  display: flex
+  justify-content: flex-end

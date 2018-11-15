@@ -13,12 +13,14 @@ const Header = ({ location }) => {
   const children = <Navbar location={location} />
   return (
     <header>
-      <Toolbar
-        themed
-        fixed
-        children={children}
-        actions={<Navmenu id='navigation-menu-1' />}
-      />
+      <div className='topnav__wrapper'>
+        <Toolbar
+          themed
+          fixed
+          children={children}
+          actions={<Navmenu id='navigation-menu-1' />}
+        />
+      </div>
     </header>
   )
 }
