@@ -25,7 +25,8 @@ const mapStateToProps = state => ({
   fetching: state.products.fetching,
   error: state.products.error,
   filter: state.products.filter,
-  totalProducts: state.products.list.length
+  totalProducts: state.products.list.length,
+  lastSuccessfulFetch: state.products.lastSuccessfulFetch
 })
 
 const ConnectedProducts = connect(

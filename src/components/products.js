@@ -26,8 +26,21 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    const { fetchProducts, filter, setFilter, match } = this.props
-    fetchProducts()
+    const {
+      fetchProducts,
+      filter,
+      setFilter,
+      match,
+      lastSuccessfulFetch
+    } = this.props
+    const now = new Date()
+
+    if (!lastSuccessfulFetch) {
+      fetchProducts()
+    } else if ((now - lastSuccessfulFetch) / 1000 > 3000) {
+      fetchProducts()
+    }
+
     const newFilter = match ? match.params.filter : null
     if (filter !== newFilter) {
       setFilter(newFilter)
