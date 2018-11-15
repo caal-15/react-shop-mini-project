@@ -16,24 +16,18 @@ const App = () => {
           render={(props) =>  <BasicLayout {...props} component={<Home />} />}
         />
         <Route
-          exact
-          path='/products'
-          render={
-            (props) => {
-              return (
-                <BasicLayout {...props} component={<ProductSection />} />
-              )
-            }
-          }
-        />
-        <Route
-          exact
           path='/products/:filter'
-          render={
+          children={
             (props) => {
-              return (
-                <BasicLayout {...props} component={<ProductSection />} />
-              )
+              const { location } = props
+              const primaryRoute = location.pathname.split('/')[1]
+              if (primaryRoute === 'products') {
+                return (
+                  <BasicLayout {...props} component={<ProductSection />} />
+                )
+              } else {
+                return null
+              }
             }
           }
         />
