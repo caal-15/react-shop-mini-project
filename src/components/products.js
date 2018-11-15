@@ -13,7 +13,8 @@ const propTypes = {
   filter: PropTypes.string,
   fetchProducts: PropTypes.func.isRequired,
   dismissError: PropTypes.func.isRequired,
-  setFilter: PropTypes.func.isRequired
+  setFilter: PropTypes.func.isRequired,
+  totalProducts: PropTypes.number.isRequired
 }
 
 class Products extends Component {
@@ -52,9 +53,23 @@ class Products extends Component {
   }
 
   render() {
-    const { fetching, products, error, dismissError } = this.props
+    const {
+      fetching,
+      products,
+      error,
+      dismissError,
+      filter,
+      totalProducts
+    } = this.props
     const { list } = this.state
     const toasts = error ? [{ text: error }] : []
+    const hiddenProducts = totalProducts - products.length
+    const metaText = filter
+      ? <p>
+        Showing: <strong>{products.length}</strong> products - Hidden
+        <strong> {hiddenProducts}</strong>
+      </p>
+      : <p>Showing: <strong>{products.length}</strong> products</p>
     return (
       <section className='products'>
         <div className='products__toolbar'>
@@ -62,6 +77,9 @@ class Products extends Component {
             <Button onClick={this.showList} icon>list</Button>
             <Button onClick={this.showGrid} icon>view_module</Button>
           </div>
+        </div>
+        <div className = 'products__meta'>
+          {metaText}
         </div>
         {fetching
           ? <div className='wait-container'>
