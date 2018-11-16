@@ -89,7 +89,7 @@ class Products extends Component {
     const matchingProducts = !search
       ? products
       : products.filter(product => {
-        return product.name.toLowerCase().includes(search)
+        return product.name.toLowerCase().includes(search.toLowerCase())
       })
 
     const toasts = error ? [{ text: error }] : []
