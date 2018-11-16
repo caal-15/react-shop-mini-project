@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { CircularProgress, Snackbar, Button } from 'react-md'
+import {
+  CircularProgress,
+  Snackbar,
+  Button,
+  TextField,
+  FontIcon
+} from 'react-md'
 import PropTypes from 'prop-types'
 
 import ProductList from './productList'
@@ -20,9 +26,10 @@ const propTypes = {
 class Products extends Component {
   constructor(props) {
     super(props)
-    this.state = { list: true }
+    this.state = { list: true, search: '' }
     this.showList = this.showList.bind(this)
     this.showGrid = this.showGrid.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
@@ -65,21 +72,33 @@ class Products extends Component {
     this.setState({ list: false })
   }
 
+  handleSearch(value) {
+    this.setState({ search: value })
+  }
+
   render() {
     const {
       fetching,
       products,
       error,
       dismissError,
-      filter,
       totalProducts
     } = this.props
-    const { list } = this.state
+    const { list, search } = this.state
+
+    const matchingProducts = !search
+      ? products
+      : products.filter(product => {
+        return product.name.toLowerCase().includes(search)
+      })
+
     const toasts = error ? [{ text: error }] : []
-    const hiddenProducts = totalProducts - products.length
-    const metaText = filter
+
+
+    const hiddenProducts = totalProducts - matchingProducts.length
+    const metaText = matchingProducts.length !== totalProducts
       ? <p>
-        Showing: <strong>{products.length}</strong> products - Hidden
+        Showing: <strong>{matchingProducts.length}</strong> products - Hidden
         <strong> {hiddenProducts}</strong>
       </p>
       : <p>Showing: <strong>{products.length}</strong> products</p>
@@ -90,6 +109,14 @@ class Products extends Component {
             <Button onClick={this.showList} icon>list</Button>
             <Button onClick={this.showGrid} icon>view_module</Button>
           </div>
+          <TextField
+            id='product-search-bar'
+            placeholder='Search'
+            rightIcon={<FontIcon>search</FontIcon>}
+            className='products__toolbar__search'
+            value={search}
+            onChange={this.handleSearch}
+          />
         </div>
         <div className = 'products__meta'>
           {metaText}
@@ -99,8 +126,8 @@ class Products extends Component {
             <CircularProgress id='products-loading' />
           </div>
           : list
-            ? <ProductList products={products} />
-            : <ProductGrid products={products} />
+            ? <ProductList products={matchingProducts} />
+            : <ProductGrid products={matchingProducts} />
         }
         <Snackbar
           id='products-error'
