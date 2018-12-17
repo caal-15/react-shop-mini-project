@@ -3,16 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import { fetchProducts, dismissError, setFilter } from '../actions/products'
 import Products from '../components/products'
-
-const getFilteredProducts = (products, filter) => {
-  if (!filter) { return products }
-  return products.filter(product => {
-    for (let category of product.categories) {
-      if (category.toLowerCase() === filter) return true
-    }
-    return false
-  })
-}
+import { getFilteredProducts } from '../selectors/products'
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: fetchProducts(dispatch),
@@ -21,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  products: getFilteredProducts(state.products.list, state.products.filter),
+  products: getFilteredProducts(state),
   fetching: state.products.fetching,
   error: state.products.error,
   filter: state.products.filter,
