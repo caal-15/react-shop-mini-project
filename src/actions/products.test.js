@@ -18,7 +18,7 @@ describe('When Fetching Products', () => {
     store = mockStore({})
   })
 
-  it('works', async () => {
+  it('Handles success correctly', async () => {
     const expected = [
       {
         id: 'MaId',
@@ -40,6 +40,23 @@ describe('When Fetching Products', () => {
     expect(store.getActions()).toEqual([
       { type: 'SET_FETCHING', fetching: true },
       { type: 'FETCH_PRODUCTS', products: expected },
+      { type: 'SET_FETCHING', fetching: false }
+    ])
+  })
+
+  it('Handles Failure Correctly', async () => {
+    httpMock.onGet(serverConf.url + '/products').reply(500)
+
+    fetchProducts(store.dispatch)()
+
+    await flushAllPromises()
+
+    expect(store.getActions()).toEqual([
+      { type: 'SET_FETCHING', fetching: true },
+      {
+        type: 'SET_ERROR',
+        error: 'There was an error fetching the products.'
+      },
       { type: 'SET_FETCHING', fetching: false }
     ])
   })
