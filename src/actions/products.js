@@ -1,4 +1,4 @@
-import superagent from 'superagent'
+import axios from 'axios'
 
 import definitions from '../definitions/products'
 import serverConf from '../config/server'
@@ -6,19 +6,20 @@ import serverConf from '../config/server'
 export const fetchProducts = (dispatch) => {
   return () => {
     dispatch({ type: definitions.SET_FETCHING, fetching: true })
-    superagent
+    axios
       .get(serverConf.url + '/products')
-      .end((err, res) => {
+      .then(res => {
+        dispatch({ type: definitions.FETCH_PRODUCTS, products: res.data })
+      })
+      .catch(err => {
+        dispatch({
+          type: definitions.SET_ERROR,
+          error: 'There was an error fetching the products.'
+        })
+        console.log(err)
+      })
+      .then(() => {
         dispatch({ type: definitions.SET_FETCHING, fetching: false })
-        if (err) {
-          dispatch({
-            type: definitions.SET_ERROR,
-            error: 'There was an error fetching the products.'
-          })
-          console.log(err)
-        } else {
-          dispatch({ type: definitions.FETCH_PRODUCTS, products: res.body })
-        }
       })
   }
 }

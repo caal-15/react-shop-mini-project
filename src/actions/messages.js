@@ -1,4 +1,4 @@
-import superagent from 'superagent'
+import axios from 'axios'
 
 import serverConf from '../config/server'
 import definitions from '../definitions/messages'
@@ -6,20 +6,20 @@ import definitions from '../definitions/messages'
 export const createMessage = (dispatch) => {
   return (data) => {
     dispatch({ type: definitions.SET_FECTHING, fetching: true })
-    superagent
-      .post(serverConf.url + '/messages')
-      .send(data)
-      .end((err, res) => {
-        dispatch({ type: definitions.SET_FECTHING, fetching: false })
-        if (err) {
-          console.log(err)
+    axios
+      .post(serverConf.url + '/messages', data)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
           dispatch({
             type: definitions.SET_ERROR,
             error: 'There was an error creating your message'
           })
-        } else {
-          console.log(res.body)
-        }
+      })
+      .then(() => {
+        dispatch({ type: definitions.SET_FECTHING, fetching: false })
       })
   }
 }
