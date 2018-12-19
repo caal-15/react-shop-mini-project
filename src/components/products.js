@@ -20,7 +20,8 @@ const propTypes = {
   fetchProducts: PropTypes.func.isRequired,
   dismissError: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
-  totalProducts: PropTypes.number.isRequired
+  totalProducts: PropTypes.number.isRequired,
+  lastSuccessfulFetch: PropTypes.instanceOf(Date)
 }
 
 class Products extends Component {
