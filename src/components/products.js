@@ -7,6 +7,7 @@ import {
   FontIcon
 } from 'react-md'
 import PropTypes from 'prop-types'
+import RouterPropTypes from 'react-router-prop-types'
 
 import ProductList from './productList'
 import ProductGrid from './productGrid'
@@ -21,7 +22,8 @@ const propTypes = {
   dismissError: PropTypes.func.isRequired,
   setFilter: PropTypes.func.isRequired,
   totalProducts: PropTypes.number.isRequired,
-  lastSuccessfulFetch: PropTypes.instanceOf(Date)
+  lastSuccessfulFetch: PropTypes.instanceOf(Date),
+  match: RouterPropTypes.match
 }
 
 class Products extends Component {
